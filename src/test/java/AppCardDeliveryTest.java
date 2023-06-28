@@ -37,6 +37,7 @@ public class AppCardDeliveryTest {
         form.$("[data-test-id=agreement]").click();
         form.$(".button").click();
         $(withText("Успешно!")).shouldBe(visible, Duration.ofSeconds(15));
+
     }
 }
 
