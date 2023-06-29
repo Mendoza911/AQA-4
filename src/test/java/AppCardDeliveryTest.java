@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,7 +38,9 @@ public class AppCardDeliveryTest {
         form.$("[data-test-id=agreement]").click();
         form.$(".button").click();
         $(withText("Успешно!")).shouldBe(visible, Duration.ofSeconds(15));
-
+        $(".notification__content")
+                .shouldHave(Condition.text("Встреча успешно забронирована на " + generate()), Duration.ofSeconds(15))
+                .shouldBe(Condition.visible);
     }
 }
 
